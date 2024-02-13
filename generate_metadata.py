@@ -38,6 +38,15 @@ def get_path_input(prompt_message, default_value):
     return user_input
 
 
+import os
+import pandas as pd
+
+
+def get_exif_data(filepath):
+    # Your existing implementation to extract EXIF data
+    pass
+
+
 def generate_csv_xls(config):
     csv_header = [
         "path",
@@ -70,7 +79,7 @@ def generate_csv_xls(config):
     data_list = []
     counter = 1
     for subdir, dirs, files in os.walk(config["directory_path"]):
-        for file in files:
+        for file in sorted(files):  # This sorts files by name before processing
             if file.endswith(".jpg"):
                 path = os.path.join(subdir, file)
                 date = get_exif_data(path)
@@ -90,7 +99,10 @@ def generate_csv_xls(config):
                 data_list.append(data)
                 counter += 1
 
-    df = pd.DataFrame(data_list, columns=csv_header)
+    # Sorting by date taken, then by name if dates are equal
+    sorted_data_list = sorted(data_list, key=lambda x: (x["date"], x["name"]))
+
+    df = pd.DataFrame(sorted_data_list, columns=csv_header)
 
     # Saving to CSV
     df.to_csv(os.path.join(config["directory_path"], "metadata.csv"), index=False)
