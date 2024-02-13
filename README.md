@@ -2,9 +2,9 @@ Discussion at at https://www.mediawiki.org/w/index.php?title=TiagoLubiana:Python
 
 # Pythonpan
 
-Pythonpan is an _exploratory_ project to study the viability of porting or mirroring core functionality of [Pattypan https://github.com/yarl/pattypan] using Python.
+Pythonpan is an _exploratory_ project to study the viability of porting or mirroring core functionality of [Pattypan](https://github.com/yarl/pattypan) using Python.
 
-It was started in [https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2023 Wikimedia Hackathon 2023].
+It was started in [Wikimedia Hackathon 2023](https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2023).
 
 ## Current big limitations:
 
